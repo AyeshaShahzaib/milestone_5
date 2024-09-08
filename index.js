@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f;
     var form = document.querySelector('form');
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -8,10 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (_a = document.getElementById('add_education')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () { return addField('education'); });
     (_b = document.getElementById('add_experience')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function () { return addField('experience'); });
     (_c = document.getElementById('add_skill')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', function () { return addField('skills'); });
-    // Add listener for the Edit button
     (_d = document.getElementById('edit_resume')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', function () { return editResume(); });
-    // Add listener for the Download PDF button
     (_e = document.getElementById('download_pdf')) === null || _e === void 0 ? void 0 : _e.addEventListener('click', function () { return downloadPDF(); });
+    (_f = document.getElementById('copy_link')) === null || _f === void 0 ? void 0 : _f.addEventListener('click', function () { return generateUniqueURL(); });
 });
 function addField(sectionId) {
     var section = document.getElementById(sectionId);
@@ -78,7 +77,7 @@ function getTextValues(selector) {
 }
 function repopulateSection(sectionId, values) {
     var section = document.getElementById(sectionId);
-    section.innerHTML = ''; // Clear existing fields
+    section.innerHTML = ''; 
     values.forEach(function (value) {
         var textarea = document.createElement('textarea');
         textarea.name = sectionId;
@@ -88,13 +87,52 @@ function repopulateSection(sectionId, values) {
         section.appendChild(textarea);
     });
 }
-// Function to download resume as PDF
+function generateUniqueURL() {
+    var name = document.getElementById('name').value.trim().replace(/\s+/g, '').toLowerCase();
+    var resumeSection = document.getElementById('Resume');
+   
+    var resumeContent = resumeSection.innerHTML;
+  
+    localStorage.setItem("resume_".concat(name), resumeContent);
+   
+    var uniqueUrl = "".concat(window.location.origin, "/resume.html?user=").concat(name);
+   
+    alert("Your unique URL: ".concat(uniqueUrl));
+}
+function copyResumeLink() {
+    var name = document.getElementById('name').value.trim().replace(/\s+/g, '').toLowerCase();
+    var uniqueUrl = "".concat(window.location.origin, "/resume.html?user=").concat(name);
+   
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(uniqueUrl).then(function () {
+            alert('Resume link copied to clipboard!');
+        }).catch(function (err) {
+            console.error('Error copying text: ', err);
+            alert('Failed to copy the link. Please try again.');
+        });
+    }
+    else {
+        var textarea = document.createElement('textarea');
+        textarea.value = uniqueUrl;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            alert('Resume link copied to clipboard!');
+        }
+        catch (err) {
+            console.error('Error copying text: ', err);
+            alert('Failed to copy the link. Please try manually.');
+        }
+        document.body.removeChild(textarea);
+    }
+}
 function downloadPDF() {
     var resumeSection = document.getElementById('Resume');
-    // Hide buttons before generating PDF
+   
     var buttons = document.querySelectorAll('button');
     buttons.forEach(function (button) { return button.style.display = 'none'; });
-    // Use html2pdf to generate and download the PDF
+    
     html2pdf(resumeSection, {
         margin: 1,
         filename: 'resume.pdf',
@@ -102,7 +140,10 @@ function downloadPDF() {
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     }).then(function () {
-        // Show buttons again after generating PDF
+        buttons.forEach(function (button) { return button.style.display = 'inline-block'; });
+    });
+}
+
         buttons.forEach(function (button) { return button.style.display = 'inline-block'; });
     });
 }
