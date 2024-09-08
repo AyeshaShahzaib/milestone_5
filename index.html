@@ -37,7 +37,7 @@
 
                 <h2>Skills</h2>
                 <div id="skills">
-                    <textarea name="skills" placeholder="Your skills" rows="2" required></textarea>
+                    <textarea name="skills" placeholder="Your Skills" rows="2" required></textarea>
                 </div>
                 <button type="button" id="add_skill">Add +</button>
 
@@ -47,7 +47,7 @@
             </form>
         </div>
     </div>
-    <section id="Resume" >
+    <section id="Resume">
         <div class="HeaderBody">
             <div class="Header2">
                 <h1></h1>
@@ -58,6 +58,7 @@
                 <h2>Personal Info</h2>
                 <p class="p1"><strong>Name:</strong></p>
                 <p><strong>Email:</strong></p>
+                <p><strong>Contact:</strong></p>
             </div>
         </div>
         <div class="Education">
@@ -78,10 +79,13 @@
                 <ul></ul>
             </div>
         </div>
-    <div class="edit_resume"><button type="button" id="edit_resume">Edit Resume</button> <button type="button" id="download_pdf">Download PDF</button></div>
+        <div class="share_buttons">
+            <button id="copy_link">Copy Resume Link</button>
+            <button id="download_pdf">Download as PDF</button>
+            <button id="edit_resume">Edit Resume</button>
+        </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script src="index.js"></script>
-    
 </body>
 </html>
