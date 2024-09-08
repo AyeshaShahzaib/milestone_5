@@ -10,11 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('add_experience')?.addEventListener('click', () => addField('experience'));
     document.getElementById('add_skill')?.addEventListener('click', () => addField('skills'));
 
-    // Add listener for the Edit button
     document.getElementById('edit_resume')?.addEventListener('click', () => editResume());
-
-    // Add listener for the Download PDF button
     document.getElementById('download_pdf')?.addEventListener('click', () => downloadPDF());
+    document.getElementById('copy_link')?.addEventListener('click', () => generateUniqueURL());
 });
 
 function addField(sectionId: string) {
@@ -99,7 +97,7 @@ function getTextValues(selector: string): string[] {
 
 function repopulateSection(sectionId: string, values: string[]) {
     const section = document.getElementById(sectionId) as HTMLElement;
-    section.innerHTML = ''; // Clear existing fields
+    section.innerHTML = ''; 
 
     values.forEach(value => {
         const textarea = document.createElement('textarea');
@@ -111,15 +109,59 @@ function repopulateSection(sectionId: string, values: string[]) {
     });
 }
 
-// Function to download resume as PDF
+function generateUniqueURL() {
+    const name = (document.getElementById('name') as HTMLInputElement).value.trim().replace(/\s+/g, '').toLowerCase();
+    const resumeSection = document.getElementById('Resume') as HTMLElement;
+
+  
+    const resumeContent = resumeSection.innerHTML;
+
+    
+    localStorage.setItem(`resume_${name}`, resumeContent);
+
+  
+    const uniqueUrl = `${window.location.origin}/resume.html?user=${name}`;
+
+ 
+    alert(`Your unique URL: ${uniqueUrl}`);
+}
+
+function copyResumeLink() {
+    const name = (document.getElementById('name') as HTMLInputElement).value.trim().replace(/\s+/g, '').toLowerCase();
+    const uniqueUrl = `${window.location.origin}/resume.html?user=${name}`;
+
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(uniqueUrl).then(() => {
+            alert('Resume link copied to clipboard!');
+        }).catch(err => {
+            console.error('Error copying text: ', err);
+            alert('Failed to copy the link. Please try again.');
+        });
+    } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = uniqueUrl;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            alert('Resume link copied to clipboard!');
+        } catch (err) {
+            console.error('Error copying text: ', err);
+            alert('Failed to copy the link. Please try manually.');
+        }
+        document.body.removeChild(textarea);
+    }
+}
+
 function downloadPDF() {
     const resumeSection = document.getElementById('Resume') as HTMLElement;
     
-    // Hide buttons before generating PDF
+  
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => button.style.display = 'none');
 
-    // Use html2pdf to generate and download the PDF
+    
     html2pdf(resumeSection, {
         margin: 1,
         filename: 'resume.pdf',
@@ -127,7 +169,7 @@ function downloadPDF() {
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     }).then(() => {
-        // Show buttons again after generating PDF
+     
         buttons.forEach(button => button.style.display = 'inline-block');
     });
 }
