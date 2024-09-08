@@ -1,0 +1,187 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.Header{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    background-color:#1D2F6F;
+}
+.Header h1{
+    margin-left: 20px;
+    color: white;
+}
+.main_div{
+    display: flex;
+    justify-content: center;
+    background-color:#F5F5F5 ;
+}
+.form{
+    margin-top:30px;
+}
+.form form{
+    margin-top:30px;
+}
+.form p{
+    font-weight: 600;
+    font-size: 20px;
+    color: #1D2F6F;
+}
+.form label{
+    font-weight: 500;
+    font-size: 18px;
+    color: #2e2e2e;
+}
+.form input{
+    height: 30px;
+    width: 250px;
+    border: 1px solid;
+    border-color: #A0A0A0 ;
+    border-radius: 4px;
+}
+.form textarea{
+    height: 50px;
+    width: 400px;
+    border: 2px solid;
+    border-color:#A0A0A0  ;
+    border-radius: 10px;
+}
+.form h2{
+    margin-top:30px;
+    margin-bottom:10px;
+    font-size: 18px;
+    color: #1D2F6F;
+}
+button{
+    height: 30px;
+    width: 70px;
+    border-radius: 3px;
+    border: none;
+    background-color: #1D2F6F;
+    color: white;
+}
+.Submit_Button{
+    display: flex;
+    justify-content: end;
+}
+.Submit_Button button{
+    height: 50px;
+    width: 150px;
+    border-radius: 3px;
+    border: none;
+    background-color: #1D2F6F;
+    color: white;
+}
+#Resume{
+    margin-top: 30px;
+    display: none;
+    height: 100vh;
+}
+.HeaderBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1D2F6F;
+  }
+  .Header2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    width: 900px;
+    background-color: #1D2F6F;
+  }
+  .Header2 img {
+    height: 100px;
+    width: 100px;
+  }
+  .Header2 h1{
+      color:white;
+      margin-left: 10px;
+  }
+  .PersonalInfo{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+  }
+  
+  .PersonalInfo div {
+      height: 100px;
+      width: 700px;
+      line-height: 30px;
+  }
+.PersonalInfo div h2 {
+    color:#1D2F6F;
+}
+.Education{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.Education div {
+    height: auto;
+    width: 700px;
+    line-height: 30px;
+}
+.Education div h2 {
+    color: #1D2F6F;
+}
+.Skills{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.Skills div {
+    width: 700px;
+    line-height: 30px;
+}
+.Skills div h2 {
+    color: #1D2F6F;
+}
+.Experience{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.Experience div {
+    width: 700px;
+    line-height: 30px;
+}
+.Experience div h2 {
+    color: #1D2F6F;
+}
+#List {
+    height: 150px;
+}
+.p1{
+    margin-top: 10px;
+}
+
+.button{
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 30px;
+    width: 100px;
+    background-color: #343843;
+    color:#E9BB06;
+    border: none;
+    font-weight: 500;
+}
+.edit_resume{
+    display: flex;
+    justify-content:center;
+}
+.edit_resume button{
+    height: 50px;
+    width: 150px;
+    border-radius: 3px;
+    border: none;
+    background-color: #1D2F6F;
+    color: white;
+    margin-left: 10px;
+}

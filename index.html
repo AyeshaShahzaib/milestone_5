@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="Header">
+        <h1>Resume Builder</h1>
+    </div>
+    <div class="main_div">
+        <div class="form">
+            <p>Fill the form and generate your Resume</p>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <h2>Contact Info</h2>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="contact_no">Contact no:</label>
+                <input type="number" id="contact_no" name="contact_no" required>
+
+                <h2>Education</h2>
+                <div id="education">
+                    <textarea name="education" placeholder="Your Education" required></textarea>
+                </div>
+                <button type="button" id="add_education">Add +</button>
+
+                <h2>Experience</h2>
+                <div id="experience">
+                    <textarea name="experience" placeholder="Your Experience" required></textarea>
+                </div>
+                <button type="button" id="add_experience">Add +</button>
+
+                <h2>Skills</h2>
+                <div id="skills">
+                    <textarea name="skills" placeholder="Your skills" rows="2" required></textarea>
+                </div>
+                <button type="button" id="add_skill">Add +</button>
+
+                <div class="Submit_Button">
+                    <button type="submit">Generate Resume</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <section id="Resume" >
+        <div class="HeaderBody">
+            <div class="Header2">
+                <h1></h1>
+            </div>
+        </div>
+        <div class="PersonalInfo">
+            <div>
+                <h2>Personal Info</h2>
+                <p class="p1"><strong>Name:</strong></p>
+                <p><strong>Email:</strong></p>
+            </div>
+        </div>
+        <div class="Education">
+            <div>
+                <h2>Education</h2>
+                <ul></ul>
+            </div>
+        </div>
+        <div class="Experience">
+            <div>
+                <h2>Experience</h2>
+                <ul></ul>
+            </div>
+        </div>
+        <div class="Skills">
+            <div>
+                <h2>Skills</h2>
+                <ul></ul>
+            </div>
+        </div>
+    <div class="edit_resume"><button type="button" id="edit_resume">Edit Resume</button> <button type="button" id="download_pdf">Download PDF</button></div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="index.js"></script>
+    
+</body>
+</html>
